@@ -62,10 +62,9 @@ footer a:hover {
 	background-color: rgba(0, 0, 0, 0.5);
 }
 
-
 .center {
     margin: auto;
-  width: 30%;
-  padding: 10px;
-  text-align: center;
+    width: 30%;
+    padding: 10px;
+    text-align: center;
 }
