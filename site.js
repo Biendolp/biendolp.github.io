@@ -18,17 +18,4 @@ if (isMorning) {
 }
 
 //week 4 secret messages
-const key = 'user input'
-const span = document.querySelector('span')
-const userInput = document.querySelector('#input')
-const button = document.querySelector('button')
-
-button.addEventListener('click', () => {
-    localStorage.setItem(key, userInput.value)
-})
-
-if (localStorage.getItem(key) == "It's a secret to everybody.") {
-    localStorage.setItem("Secret Message", "Zelda?")
-}
-const storedValue = localStorage.getItem("Secret Message") || 'Enter Secret Code'
-span.textContent = storedValue
+localStorage.setItem("Secret", "It's a secret to everybody.")
