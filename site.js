@@ -68,3 +68,43 @@ next.addEventListener('click', () => {
     }
     showImages();
 });
+
+//WEEK 7
+//get button, input box, and ul contents
+const todoList = document.querySelector('.todo-list');
+const input = document.querySelector('#new-todo');
+const addButton = document.querySelector('button');
+
+// renderTodos of the list
+const renderTodos = () => {
+    // Get the list from local storage
+    const todos = JSON.parse(localStorage.getItem('todo-list')) || [];
+    // Clear the li's before we recreate them (will add all the items a second time if not done)
+    todoList.innerHTML = '';
+
+    // Create and add new list items to the DOM for  each todo
+    todos.forEach((todo, index) => {
+        const li = document.createElement('li');
+        li.textContent = todo.text;
+        li.classList.add('todo');
+        todoList.appendChild(li);
+    });
+};
+
+//loads list when page is open
+renderTodos();
+
+// listens for button press
+addButton.addEventListener('click', () => {
+    // Get the list from local storage OR load default data
+    const todos = JSON.parse(localStorage.getItem('todo-list')) || [];
+    // Add new item to the list
+    todos.push({ text: input.value, completed: false });
+    // Save the updated list to local storage
+    localStorage.setItem('todo-list', JSON.stringify(todos));
+
+    // render the list again to show change
+    renderTodos();
+    // clear user input for next item
+    input.value = '';
+})
