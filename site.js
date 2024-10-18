@@ -108,3 +108,33 @@ addButton.addEventListener('click', () => {
     // clear user input for next item
     input.value = '';
 })
+
+//WEEK 8
+
+const getRandomPokemon = async () => {
+    //Rand poke api url
+    const url = 'https://pokeapi.co/api/v2/pokemon/' + Math.floor(Math.random() * 150)
+    //response and object return
+    const pokeLink = await fetch(url);
+    const pokemon = await pokeLink.json()
+    return pokemon;
+}
+
+const renderPokemon = (pokemon) => {
+    //Image Div
+    const parentElement = document.querySelector('.poke');
+
+    const img = document.createElement('img')
+    img.src = pokemon.sprites.front_default; //poke api sprite
+    img.alt = pokemon.name; //poke api name
+    parentElement.append(img)
+}
+
+//async to call functions from api??
+(async () => {
+    const pokemon = await getRandomPokemon();
+    renderPokemon(pokemon);
+  })();
+
+////////////////////////////////////////////////////////////////
+//getRandomPokemon().then(pokemon -> renderPokemon(pokemon)) XXXXXXXX
